@@ -41,7 +41,8 @@ To compute fixed problem-size parallel efficiency, we must first compute speed-u
 Here, we demonstrate that all of the parallel algorithms out perform the original algorithm. Further, the Triangle Algorithm and Unsupervised Algorithm outperform the naive OMP implementation. At low thread counts, the Triangle Algorithm has better speed-up and efficiency than the Unsupervised Algorithm. However, at higher thread counts, the Unsupervised Algorithm has better speed-up and efficiency than the Triangle Algorithm.
 
 ### 2.2 Isogranular Scaling
-Text and Images here...
+![Isogranular analysis](Isogranular_analysis.png)
+
 
 ## Author Contributions
 <!--## 2. Files-->
