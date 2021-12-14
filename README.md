@@ -1,31 +1,49 @@
 # :dna:ParallelRNA:dna:: Parallel RNA structure counting algorithm 
 Secondary structures for nucleic acid sequences, DNA and RNA, are useful abstractions when examining certain behaviors of those molecules. We examine the problem of counting secondary structures compatible with an ordered multiset of sequences. In particular, we address the issue of accounting for indistinguishable secondary structures, for which no fast algorithm has been found. We provide a parallel algorithm for counting distinguishable secondary structures.
-<br>
-<!-- ![alt text](https://github.com/masarunakajima/parallelRNA/blob/openMP/parallel%20rna.PNG) -->
-<!-- ![alt text](https://github.com/masarunakajima/parallelRNA/blob/openMP/total%20fig.jpg) -->
-<img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/figure.jpg" width="300">
-<img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/parallelRNA_vis.gif" width="600">
 
 ## 0. Prerequisites
-gcc/8.3.0 <br />
+g++ <br />
 openmp <br />
-Boost library
 
-## 1. How to compile and run
+### How to compile and run
 ```
-gcc -o count_OMP -I/path/to/boost src/count_OMP.cpp -fopenmp \
--lstdc++ -L/path/to/boost/stage/lib/ -lboost_mpi -lboost_serialization
+g++ -o max_pair_omp src/max_pair_omp.cpp -fopenmp 
 
-./count_OMP input.txt
+./max_pair_omp input.txt num_threads
 ```
+## 1. Algorithms
 
-## 2. How to compile and run for measurement
-```
-gcc -o count_OMP_adaptive -I/path/to/boost src/count_OMP_adaptive.cpp -fopenmp \
--lstdc++ -L/path/to/boost/stage/lib/ -lboost_mpi -lboost_serialization
+### 1.1. Diagonal Algorithm
+The first type of parallel algorithm breaks up each diagonal into chunks that each OMP thread solves individually. Once a chunk is done, it waits for the remaining threads to finish to move on to the next diagonal section.
+<br>
+<img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/figure.jpg" width="300"> <br>
+<img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/parallelRNA_vis.gif" width="600">
 
-./count_OMP_adaptive input.txt num_threads
-```
+
+### 1.2. Triangle Algorithm
+The second type of parallel algorithm breaks up each diagonal into chunks and computes a full triangle of the matrix. After it fills this triangle and all threads finish, it computes the inverted triangle such that after a triangle and inverted triangle are complete, the matrix has a perfect diagonal on which it can run the algorithm again.
+<br>
+<img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/tri-gif.gif" width="600">
+
+### 1.3. Unsupervised Algorithm
+Finally, we include an unsupervised algorithm. The two previous algorithms tell OMP the size of chunk each thread should work on. However, sometimes it is faster to let OMP assign threads tasks on its own. This algorithm is functionally similar to the Diagonal Algorithm, except it does not define a specific chucnk length or starting and ending position, it simply fills in the diagonals in whichever order OMP sees fit.
+
+## 2. Scalability
+### 2.1 Fixed Problem-Size Parallel Efficiency
+To compute fixed problem-size parallel efficiency, we must first compute speed-up. This is defined as the time it takes to run on one node divided by the time it takes to run on <i>P</i> nodes. From this value, we can compute efficiency as <i>Speed-up/P</i>. The following plots define the fixed problem size efficiency for the different algorithms using an input RNA of 5000 bases.
+<br>
+<br>
+<img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/runtime.png" width="425">
+<img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/speedup.png" width="425">
+<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/efficiency.png" width="425"></p>
+<br><br>
+
+Here, we demonstrate that all of the parallel algorithms out perform the original algorithm. Further, the Triangle Algorithm and Unsupervised Algorithm outperform the naive OMP implementation. At low thread counts, the Triangle Algorithm has better speed-up and efficiency than the Unsupervised Algorithm. However, at higher thread counts, the Unsupervised Algorithm has better speed-up and efficiency than the Triangle Algorithm.
+
+### 2.2 Isogranular Scaling
+Text and Images here...
+
+## Author Contributions
 <!--## 2. Files-->
 <!--The following files are included in this folder, in addition to this readme-->
 <!--file, readme.md.-->
