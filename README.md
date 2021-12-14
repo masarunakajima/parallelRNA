@@ -1,5 +1,6 @@
 # :dna:ParallelRNA:dna:: Parallel RNA structure counting algorithm 
-Secondary structures for nucleic acid sequences, DNA and RNA, are useful abstractions when examining certain behaviors of those molecules. We examine the problem of counting secondary structures compatible with an ordered multiset of sequences. In particular, we address the issue of accounting for indistinguishable secondary structures, for which no fast algorithm has been found. We provide a parallel algorithm for counting distinguishable secondary structures.
+Secondary structures for nucleic acid sequences, DNA and RNA, are useful abstractions when examining certain behaviors of those molecules. We examine the problem of finding a secondary structure with maximum number of base pairs. The Nussinov algorthm solves this problem in cubic time. 
+Our aim is to come up with parallelization of Nussoniv algorithm. 
 
 ## 0. Prerequisites
 g++ <br />
@@ -43,6 +44,10 @@ Here, we demonstrate that all of the parallel algorithms out perform the origina
 ### 2.2 Isogranular Scaling
 ![Isogranular analysis](Isogranular_analysis.png)
 
+Here we analyze the isogranular scaling of the three parallel algorithms. Since
+the max pair algorithm is cubic and we parallelize one loop, an ideal parallel
+algorithm would take same amount of time as the input size is increased by
+\\(tnum^{1/3}\\), where \\(tnum\\) is the number of threads.
 
 ## Author Contributions
 <!--## 2. Files-->
