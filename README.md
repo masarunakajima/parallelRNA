@@ -33,9 +33,9 @@ Finally, we include an unsupervised algorithm. The two previous algorithms tell 
 To compute fixed problem-size parallel efficiency, we must first compute speed-up. This is defined as the time it takes to run on one node divided by the time it takes to run on <i>P</i> nodes. From this value, we can compute efficiency as <i>Speed-up/P</i>. The following plots define the fixed problem size efficiency for the different algorithms using an input RNA of 5000 bases.
 <br>
 <br>
-<img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/runtime.png" width="425">
-<img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/speedup.png" width="425">
-<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/efficiency.png" width="425"></p>
+<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/runtime.png" width="500"></p>
+<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/speedup.png" width="500"></p>
+<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/efficiency.png" width="500"></p>
 <br><br>
 
 Here, we demonstrate that all of the parallel algorithms out perform the original algorithm. Further, the Triangle Algorithm and Unsupervised Algorithm outperform the naive OMP implementation. At low thread counts, the Triangle Algorithm has better speed-up and efficiency than the Unsupervised Algorithm. However, at higher thread counts, the Unsupervised Algorithm has better speed-up and efficiency than the Triangle Algorithm.
