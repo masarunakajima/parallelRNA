@@ -47,8 +47,8 @@ Here, we demonstrate that all of the parallel algorithms out perform the origina
 Here we analyze the isogranular scaling of the three parallel algorithms. Since
 the max pair algorithm is cubic and we parallelize one loop, an ideal parallel
 algorithm would take same amount of time as the input size is increased by 
-<img src="https://render.githubusercontent.com/render/math?math=tnum^{1/3}">, 
-where <img src="https://render.githubusercontent.com/render/math?math=tnum">is the number of threads.
+<img src="https://render.githubusercontent.com/render/math?math=t^{1/3}">, 
+where <img src="https://render.githubusercontent.com/render/math?math=t"> is the number of threads.
 
 ## Author Contributions
 <!--## 2. Files-->
