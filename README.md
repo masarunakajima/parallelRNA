@@ -49,6 +49,11 @@ the max pair algorithm is cubic and we parallelize one loop, an ideal parallel
 algorithm would take same amount of time as the input size is increased by 
 <img src="https://render.githubusercontent.com/render/math?math=t^{1/3}">, 
 where <img src="https://render.githubusercontent.com/render/math?math=t"> is the number of threads.
+We there ran each program with input size increasing with 
+<img src="https://render.githubusercontent.com/render/math?math=t^{1/3}"> and
+analyzed the efficiency. As a result, for all three programs the efficiency was
+about 1.4 with the number of threads being 16. The unsupervised algorithm
+tended to be closer to the ideal behavior. 
 
 ## Author Contributions
 <!--## 2. Files-->
