@@ -17,8 +17,8 @@ g++ -o max_pair_omp src/max_pair_omp.cpp -fopenmp
 ### 1.1. Diagonal Algorithm
 The first type of parallel algorithm breaks up each diagonal into chunks that each OMP thread solves individually. Once a chunk is done, it waits for the remaining threads to finish to move on to the next diagonal section.
 <br>
-<img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/figure.jpg" width="300"> <br>
-<img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/parallelRNA_vis.gif" width="600">
+<img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/figure.jpg" width="300"> <br>
+<img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/parallelRNA_vis.gif" width="600">
 
 
 ### 1.2. Triangle Algorithm
@@ -34,15 +34,15 @@ Finally, we include an unsupervised algorithm. The two previous algorithms tell 
 To compute fixed problem-size parallel efficiency, we must first compute speed-up. This is defined as the time it takes to run on one node divided by the time it takes to run on <i>P</i> nodes. From this value, we can compute efficiency as <i>Speed-up/P</i>. The following plots define the fixed problem size efficiency for the different algorithms using an input RNA of 5000 bases.
 <br>
 <br>
-<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/16_threads_results/runtime.png" width="500"></p>
-<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/16_threads_results/speedup.png" width="500"></p>
-<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/16_threads_results/efficiency.png" width="500"></p>
+<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/runtime.png" width="500"></p>
+<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/speedup.png" width="500"></p>
+<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/efficiency.png" width="500"></p>
 <br><br>
 
 Here, we demonstrate that all of the parallel algorithms out perform the original algorithm. Further, the Triangle Algorithm and Unsupervised Algorithm outperform the naive OMP implementation. At low thread counts, the Triangle Algorithm has better speed-up and efficiency than the Unsupervised Algorithm. However, at higher thread counts, the Unsupervised Algorithm has better speed-up and efficiency than the Triangle Algorithm.
 
 ### 2.2 Isogranular Scaling
-<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/Isogranular_analysis.png" width="500"></p>
+<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/Isogranular_analysis.png" width="500"></p>
 
 Here we analyze the isogranular scaling of the three parallel algorithms. Since
 the max pair algorithm is cubic and we parallelize one loop, an ideal parallel
