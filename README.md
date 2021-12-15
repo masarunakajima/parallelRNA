@@ -1,4 +1,4 @@
-# :dna:ParallelRNA:dna:: Parallel RNA structure counting algorithm 
+# :dna:ParallelRNA:dna:: Parallel Nussoniv's Algorithm for RNA maximum-pair computation 
 Secondary structures for nucleic acid sequences, DNA and RNA, are useful abstractions when examining certain behaviors of those molecules. We examine the problem of finding a secondary structure with maximum number of base pairs. The Nussinov algorthm solves this problem in cubic time. 
 Our aim is to come up with parallelization of Nussoniv algorithm. 
 
