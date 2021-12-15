@@ -56,7 +56,7 @@ about 1.4 with the number of threads being 16. The unsupervised algorithm
 tended to be closer to the ideal behavior. 
 
 ## Author Contributions
-M.N. wrote the max pair algorithm and non parallel code. M.N. and Z.T. wrote the parallel programs. Z.N. and Z.T. performed fixed problem size scalability analysis. M.N. performed isogranular scalability analysis. Z.T. created the gifs.
+M.N. wrote the max pair algorithm non parallel code. M.N. and Z.T. wrote the parallel programs. Z.N. and Z.T. performed fixed problem size scalability analysis. M.N. performed isogranular scalability analysis. Z.T. created the gifs.
 <!--## 2. Files-->
 <!--The following files are included in this folder, in addition to this readme-->
 <!--file, readme.md.-->
