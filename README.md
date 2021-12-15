@@ -34,15 +34,15 @@ Finally, we include an unsupervised algorithm. The two previous algorithms tell 
 To compute fixed problem-size parallel efficiency, we must first compute speed-up. This is defined as the time it takes to run on one node divided by the time it takes to run on <i>P</i> nodes. From this value, we can compute efficiency as <i>Speed-up/P</i>. The following plots define the fixed problem size efficiency for the different algorithms using an input RNA of 5000 bases.
 <br>
 <br>
-<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/runtime.png" width="500"></p>
-<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/speedup.png" width="500"></p>
-<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/efficiency.png" width="500"></p>
+<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/16_threads_results/runtime.png" width="500"></p>
+<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/16_threads_results/speedup.png" width="500"></p>
+<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/16_threads_results/efficiency.png" width="500"></p>
 <br><br>
 
 Here, we demonstrate that all of the parallel algorithms out perform the original algorithm. Further, the Triangle Algorithm and Unsupervised Algorithm outperform the naive OMP implementation. At low thread counts, the Triangle Algorithm has better speed-up and efficiency than the Unsupervised Algorithm. However, at higher thread counts, the Unsupervised Algorithm has better speed-up and efficiency than the Triangle Algorithm.
 
 ### 2.2 Isogranular Scaling
-![Isogranular analysis](Isogranular_analysis.png)
+<p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/openMP/Isogranular_analysis.png" width="500"></p>
 
 Here we analyze the isogranular scaling of the three parallel algorithms. Since
 the max pair algorithm is cubic and we parallelize one loop, an ideal parallel
@@ -56,6 +56,7 @@ about 1.4 with the number of threads being 16. The unsupervised algorithm
 tended to be closer to the ideal behavior. 
 
 ## Author Contributions
+M.N. wrote the max pair algorithm non parallel code. M.N. and Z.T. wrote the parallel programs. Z.N. and Z.T. performed fixed problem size scalability analysis. M.N. performed isogranular scalability analysis. Z.T. created the gifs.
 <!--## 2. Files-->
 <!--The following files are included in this folder, in addition to this readme-->
 <!--file, readme.md.-->
