@@ -30,8 +30,17 @@ The second type of parallel algorithm breaks up each diagonal into chunks and co
 Finally, we include an unsupervised algorithm. The two previous algorithms tell OMP the size of chunk each thread should work on. However, sometimes it is faster to let OMP assign threads tasks on its own. This algorithm is functionally similar to the Diagonal Algorithm, except it does not define a specific chucnk length or starting and ending position, it simply fills in the diagonals in whichever order OMP sees fit.
 
 ## 2. Scalability
-### 2.1 Fixed Problem-Size Parallel Efficiency
-To compute fixed problem-size parallel efficiency, we must first compute speed-up. This is defined as the time it takes to run on one node divided by the time it takes to run on <i>P</i> nodes. From this value, we can compute efficiency as <i>Speed-up/P</i>. The following plots define the fixed problem size efficiency for the different algorithms using an input RNA of 5000 bases.
+### 2.1 Fixed Problem-Size Parallel Efficiency (8 Thread)
+To compute fixed problem-size parallel efficiency, we must first compute speed-up. This is defined as the time it takes to run on one node divided by the time it takes to run on <i>P</i> nodes. From this value, we can compute efficiency as <i>Speed-up/P</i>. The following plots define the fixed problem size efficiency for the different algorithms using an input RNA of 5000 bases and up to 8 threads.
+
+Metric | Diagonal | Triangle | Unsupervised |
+--- | --- | --- | --- |
+Runtime | <img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/omp_execution_time.PNG" width="500"> | <img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/omp_tri_execution_time.PNG" width="500"> | <img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/unsup_omp_execution_time.PNG" width="500"> |
+Speed-up | <img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/omp_speed_up.PNG" width="500"> | <img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/omp_tri_speedup.PNG" width="500"> | <img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/unsup_omp_speedup.PNG" width="500"> |
+Efficiency | <img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/omp_efficiency.PNG" width="500"> | <img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/omp_tri_efficiency.PNG" width="500"> | <img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/unsup_omp_efficiency.PNG" width="500"> |
+
+### 2.2 Fixed Problem-Size Parallel Efficiency (16 Thread)
+The following plots define the fixed problem size efficiency for the different algorithms using an input RNA of 5000 bases and up to 16 threads.
 <br>
 <br>
 <p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/runtime.png" width="500"></p>
@@ -41,7 +50,7 @@ To compute fixed problem-size parallel efficiency, we must first compute speed-u
 
 Here, we demonstrate that all of the parallel algorithms out perform the original algorithm. Further, the Triangle Algorithm and Unsupervised Algorithm outperform the naive OMP implementation. At low thread counts, the Triangle Algorithm has better speed-up and efficiency than the Unsupervised Algorithm. However, at higher thread counts, the Unsupervised Algorithm has better speed-up and efficiency than the Triangle Algorithm.
 
-### 2.2 Isogranular Scaling
+### 2.3 Isogranular Scaling
 <p align='center'><img src="https://github.com/masarunakajima/parallelRNA/blob/master/figures/Isogranular_analysis.png" width="500"></p>
 
 Here we analyze the isogranular scaling of the three parallel algorithms. Since
